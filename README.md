@@ -31,3 +31,12 @@ Ova igra je slagalica brojeva u kojoj korisnik treba da pomeri brojeve kako bi i
 
    Pokrenite skriptu:
 python skriptu.py
+
+## Tutorial Video
+
+https://www.youtube.com/watch?v=zfzZLHGtB1s
+
+## Preuzimanje fajla
+
+https://drive.google.com/file/d/1A0q5QeHZBXDj1b9ky02s2B0rT5iEERqo/view?usp=drive_link
+
