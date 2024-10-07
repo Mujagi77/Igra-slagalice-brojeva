@@ -34,9 +34,9 @@ python skriptu.py
 
 ## Tutorial Video
 
-https://www.youtube.com/watch?v=zfzZLHGtB1s
+Link:https://www.youtube.com/watch?v=zfzZLHGtB1s
 
 ## Preuzimanje fajla
 
-https://drive.google.com/file/d/1A0q5QeHZBXDj1b9ky02s2B0rT5iEERqo/view?usp=drive_link
+Link:https://drive.google.com/file/d/1iN66NjgyU9ye61ib5hyMutM1Hp3n4yMc/view?usp=sharing
 
