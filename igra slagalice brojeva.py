@@ -116,21 +116,44 @@ class Slagalica:
         self.apply_theme()
         self.create_grid()
 
+        def is_solvable(self, board):
+        """Proverava da li je slagalica rešiva."""
+        one_d_board = [num for row in board for num in row if num != ""]
+
+        # Brojanje inverzija
+        inversions = 0
+        for i in range(len(one_d_board)):
+            for j in range(i + 1, len(one_d_board)):
+                if one_d_board[i] > one_d_board[j]:
+                    inversions += 1
+
+        empty_row = self.empty_tile[0] + 1  # Red praznog polja (počinjemo od 1)
+
+        # Pravilo za rešivost 5x5 slagalice
+        return (empty_row % 2 == 0 and inversions % 2 != 0) or (empty_row % 2 != 0 and inversions % 2 == 0)
+
     def create_grid(self):
-        numbers = list(range(1, 25))
-        random.shuffle(numbers)
-        numbers.append("")  # Empty tile
+        while True:  # Loop until we find a solvable configuration
+            numbers = list(range(1, 25))
+            random.shuffle(numbers)
+            numbers.append("")  # Empty tile
+
+            # Check if the generated board is solvable
+            if self.is_solvable([numbers[i:i + 5] for i in range(0, 25, 5)]):
+                break  # Exit loop if solvable
 
         for i in range(5):
             row = []
             for j in range(5):
                 num = numbers.pop(0)
                 if num == "":
-                    btn = tk.Button(self.frame, text=num, bg=self.themes[self.current_theme]["empty_bg"], fg=self.themes[self.current_theme]["empty_fg"], font=('Helvetica', 24, 'bold'),
+                    btn = tk.Button(self.frame, text=num, bg=self.themes[self.current_theme]["empty_bg"],
+                                    fg=self.themes[self.current_theme]["empty_fg"], font=('Helvetica', 24, 'bold'),
                                     width=6, height=3)
                     self.empty_tile = (i, j)
                 else:
-                    btn = tk.Button(self.frame, text=str(num), bg=self.themes[self.current_theme]["tile_bg"], fg=self.themes[self.current_theme]["tile_fg"],
+                    btn = tk.Button(self.frame, text=str(num), bg=self.themes[self.current_theme]["tile_bg"],
+                                    fg=self.themes[self.current_theme]["tile_fg"],
                                     font=('Helvetica', 24, 'bold'), width=6, height=3)
                 btn.grid(row=i, column=j, padx=4, pady=4)
                 btn.config(command=lambda btn=btn, i=i, j=j: self.move_tile(btn, i, j))
